@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="authlogin">
+    <ion-list class="logNReg">
+      <ion-item>
+        <ion-label stacked>Email Id</ion-label>
+        <ion-input type="text" name='email' formControlName='email' [(ngModel)]='loginUser.email'></ion-input>
+      </ion-item>
+      <ion-item no-lines class="itemClass" *ngIf="(authlogin.get('email').hasError('required') || authlogin.get('email').hasError('email') || authlogin.get('email').hasError('pattern') ) && authlogin.get('email').touched">
+        <div *ngIf="(authlogin.get('email').hasError('email') || authlogin.get('email').hasError('pattern')) && authlogin.get('email').touched">
+          Please enter valid email.
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input type="password" name='password' formControlName='password' [(ngModel)]='loginUser.password'></ion-input>
+      </ion-item>
+      <ion-item no-lines class="itemClass" *ngIf="( authlogin.get('password').hasError('minlength') ||  authlogin.get('password').hasError('maxlength') || authlogin.get('password').hasError('required') ) && authlogin.get('password').touched">
+        <div *ngIf="authlogin.get('password').hasError('minlength') && authlogin.get('password').touched">
+          Must contain at least six characters.
+        </div>
+        <div *ngIf="authlogin.get('password').hasError('maxlength') && authlogin.get('password').touched">
+          Must contain at most tweleve characters.
+        </div>
+      </ion-item>
+    </ion-list>
+    <div class="login">
+      <button ion-button [ngClass]="authlogin.valid  ? 'submit-enable': 'submit-disable'" (click)="login()" [disabled]="!authlogin.valid">Login</button>
+      <button ion-button color="primary" (click)="register()">Register</button>
+    </div>
+  </form>
+  <div class="hint">
+    Hint:
+    <br>
+    Email : user@gmail.com
+    <br>
+    password : 123456
+  </div>
+</ion-content>

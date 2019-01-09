@@ -1,0 +1,30 @@
+page-home {
+    .itemClass{
+        color: red;
+        font-size: 12px;
+        border-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);
+      }
+      .submit-disable{
+        background-color: rgb(113, 152, 235);
+        color: black;
+      }
+      .submit-enable{
+        background-color: #488aff;
+        color: white;
+      }
+      .login{
+        text-align: center;   
+      }
+      .logNReg{
+        border: 0.7 solid grey !important;
+        margin: 4px;
+        margin-top: 20px;
+      }
+      .hint{
+        padding-top: 40px;
+        text-align: center;
+        font-size: 13px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+}

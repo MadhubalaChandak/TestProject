@@ -1,0 +1,25 @@
+page-dashboard {
+.form{
+    border: 0.6px solid black;
+    margin : 4px;
+    margin-top: 20px;
+    padding: 20px;
+}
+.save{
+    text-align: center;
+}
+.data{
+    ion-col{
+        border-right: 0.7 solid grey !important;
+        &:last-child{
+            border-right: none;
+        }
+    }
+}
+span{
+    font-size: 12px;
+}
+.heading{
+    font-weight: bold !important;
+}
+}

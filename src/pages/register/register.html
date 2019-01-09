@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Registeration</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="authForm">
+    <ion-item>
+      <ion-label stacked>First Name*</ion-label>
+      <ion-input type="text" name='firstname' [(ngModel)]='user.firstname' formControlName='firstname'></ion-input>
+    </ion-item>
+    <ion-item no-lines class="itemClass" *ngIf="( authForm.get('firstname').hasError('required')) && authForm.get('firstname').touched">
+      <div *ngIf="(authForm.get('firstname').hasError('required')) && authForm.get('firstname').touched">
+        First Name is Mandatory
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Middle Name</ion-label>
+      <ion-input type="text" name='middlename' [(ngModel)]='user.middlename' formControlName='middlename'></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Last Name*</ion-label>
+      <ion-input type="text" name='lastname' [(ngModel)]='user.lastname' formControlName='lastname'></ion-input>
+    </ion-item>
+    <ion-item no-lines class="itemClass" *ngIf="( authForm.get('lastname').hasError('required')) && authForm.get('lastname').touched">
+      <div *ngIf="(authForm.get('lastname').hasError('required')) && authForm.get('lastname').touched">
+        Last Name is Mandatory
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Email Id*</ion-label>
+      <ion-input type="text" name='email' [(ngModel)]='user.email' formControlName='email'></ion-input>
+    </ion-item>
+    <ion-item no-lines class="itemClass" *ngIf="(authForm.get('email').hasError('required') || authForm.get('email').hasError('email') || authForm.get('email').hasError('pattern') ) && authForm.get('email').touched">
+      <div *ngIf="(authForm.get('email').hasError('email') || authForm.get('email').hasError('pattern')) && authForm.get('email').touched">
+        Please enter valid email.
+      </div>
+    </ion-item>
+    <ion-row class="mobilefield">
+      <ion-col col-3>
+        <ion-item>
+          <ion-label stacked>Code</ion-label>
+          <ion-input type="number">+91</ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-9>
+        <ion-item>
+          <ion-label stacked>Phone No:</ion-label>
+          <ion-input type="number" name="mobile_number" [(ngModel)]="user.mobile_number" formControlName='mobile_number'>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-item no-lines class="itemClass" *ngIf="(authForm.get('mobile_number').hasError('minlength') || authForm.get('mobile_number').hasError('maxlength') ||  authForm.get('mobile_number').hasError('pattern')) && authForm.get('mobile_number').touched">
+      <div *ngIf="(authForm.get('mobile_number').hasError('maxlength') || authForm.get('mobile_number').hasError('minlength') || authForm.get('mobile_number').hasError('pattern'))&& authForm.get('mobile_number').touched">
+        Mobile Number must be 10 digit.
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password*</ion-label>
+      <ion-input type="password" name='password' [(ngModel)]='user.password' formControlName='password'></ion-input>
+    </ion-item>
+
+    <ion-item no-lines class="itemClass" *ngIf="( authForm.get('password').hasError('minlength') ||  authForm.get('password').hasError('maxlength') || authForm.get('password').hasError('required') ) && authForm.get('password').touched">
+      <div *ngIf="authForm.get('password').hasError('minlength') && authForm.get('password').touched">
+        Must contain at least six characters.
+      </div>
+      <div *ngIf="authForm.get('password').hasError('maxlength') && authForm.get('password').touched">
+        Must contain at most tweleve characters.
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Confirm Password*</ion-label>
+      <ion-input type="password" name='confirmPassword' [(ngModel)]='user.confirmPassword' formControlName='confirmPassword'></ion-input>
+    </ion-item>
+    <ion-item no-lines class="itemClass" *ngIf="(authForm.get('confirmPassword').hasError('required') || authForm.get('confirmPassword').hasError('equalTo') ) && authForm.get('confirmPassword').touched">
+      <div *ngIf="authForm.get('confirmPassword').hasError('equalTo') && authForm.get('password').touched">
+        Password must be same.
+      </div>
+    </ion-item>
+    <div>
+      <button ion-button full [ngClass]="authForm.valid  ? 'submit-enable': 'submit-disable'" (click)="register()"
+        [disabled]="!authForm.valid">Register</button>
+    </div>
+  </form>
+</ion-content>

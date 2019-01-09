@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="form">
+    <ion-row>
+      <ion-col col-4>
+        Student ID
+      </ion-col>
+      <ion-col col-8>
+        <input type="text" [(ngModel)]="newItem.studentID" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        Student Name
+      </ion-col>
+      <ion-col col-8>
+        <input type="text" [(ngModel)]="newItem.studentName" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        Email
+      </ion-col>
+      <ion-col col-8>
+        <input type="text" [(ngModel)]="newItem.email" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        Class
+      </ion-col>
+      <ion-col col-8>
+        <input type="text" [(ngModel)]="newItem.class" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        Enrollment Year
+      </ion-col>
+      <ion-col col-8>
+        <input type="text" [(ngModel)]="newItem.enrollment" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        City
+      </ion-col>
+      <ion-col col-8>
+        <input type="text" [(ngModel)]="newItem.city" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        Country
+      </ion-col>
+      <ion-col col-8>
+        <input type="text" [(ngModel)]="newItem.country" />
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="save">
+    <button ion-button color="primary" (click)="addItem()">Save</button>
+    <button ion-button color="primary" (click)="clear()">Clear</button>
+  </div>
+  <ion-list #mylist>
+    <ion-list-header>
+      <ion-label>My Forms</ion-label>
+    </ion-list-header>
+    <ion-card>
+    <ion-item-sliding *ngFor="let item of items">
+      <ion-item>
+        <div class="data">
+          <ion-row class="heading">
+            <ion-col col-1>
+              <span>ID</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>Name</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>Email</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>Class</span>
+            </ion-col>
+            <ion-col col-1>
+              <span>Yr</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>City</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>Country</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-1>
+              <span>{{item.studentID}}</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>{{item.studentName}}</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>{{item.email}}</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>{{item.class}}</span>
+            </ion-col>
+            <ion-col col-1>
+              <span>{{item.enrollment}}</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>{{item.city}}</span>
+            </ion-col>
+            <ion-col col-2>
+              <span>{{item.country}}</span>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="updateItem(item)">Update</button>
+        <button ion-button color="danger" (click)="deleteItem(item)">Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+    </ion-card>
+  </ion-list>
+</ion-content>
